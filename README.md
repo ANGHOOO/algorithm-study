@@ -1,4 +1,4 @@
 # algorithm-study
 
-## Lauguage
+## Language
 - Python
