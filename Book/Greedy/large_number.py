@@ -1,26 +1,39 @@
 n, m, k = map(int, input().split())
-arr = list(map(int, input()) for _ in range(n))
+arr = list(map(int, input().split()))
 
-# n, m, k = 5, 8, 3
-# arr = [2, 4, 5, 4, 6]
-
-arr.sort()
-first = arr[-1]
-second = arr[-2]
-
-answer = 0
+# My solution
+ans = 0
 cnt = 0
-
-for i in range(m):
-    if i == 0:
-        answer += first
+sorted_arr = sorted(arr, reverse=True)
+for _ in range(m):
+    if cnt < k:
+        ans += sorted_arr[0]
         cnt += 1
-        continue
-
-    if cnt % k == 0:
-        answer += second
     else:
-        answer += first
-    cnt += 1
+        ans += sorted_arr[1]
+        cnt = 0
 
-print(answer)
+print(ans)
+
+# Book Solution    
+n, m, k = map(int, input().split())
+data = list(map(int, input().split()))
+data.sort()
+first = data[n-1]
+second = data[n-2]
+
+result = 0
+
+while True:
+    for i in range(k):
+        if m == 0:
+            break
+        result += first 
+        m -= 1
+    if m == 0:
+        break
+    result += second 
+    m -= 1
+
+print(result)
+
