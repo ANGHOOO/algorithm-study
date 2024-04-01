@@ -1,24 +1,21 @@
-N = 5
-direction = ['R', 'R', 'R', 'U', 'D', 'D']
-start_x, start_y = 1, 1
+n = int(input())
+direction = list(input().split())
 
-dxs, dys = [0, 0, -1, 1], [-1, 1, 0, 0]
-
+dxs, dys = [-1, 1, 0, 0], [0, 0, -1, 1]
+x, y = 1, 1
 mapper = {
-    'L' : 0,
-    'R' : 1,
-    'U' : 2,
-    'D' : 3
+    'U' : 0,
+    'D' : 1,
+    'L' : 2,
+    'R' : 3
 }
 
-for direc in direction:
-    d = mapper[direc]
-    dx, dy = dxs[d], dys[d]
-    new_x, new_y = start_x + dx, start_y + dy
-
-    if new_x < 1 or new_x > N or new_y < 1 or new_y > N:
+for d in direction:
+    dx, dy = dxs[mapper[d]], dys[mapper[d]]
+    nx, ny = x + dx, y + dy 
+    if nx < 1 or nx > n or ny < 1 or ny > n:
         continue
+    else:
+        x, y = nx, ny
 
-    start_x, start_y = new_x, new_y
-
-print(start_x, start_y)
+print(x, y)
