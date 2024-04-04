@@ -1,19 +1,13 @@
-# n, m = 4, 4
-# x, y, direction = 1, 1, 0
-# visited = [[0] * m for _ in range(n)]
-# visited[x][y] = 1 # 현재 좌표 방문 처리
-# arr = [[1, 1, 1, 1], [1, 0, 0, 1], [1, 1, 0, 1], [1, 1, 1, 1]]
-
 n, m = map(int, input().split())
-visited = [[0] * m for _ in range(n)]
 x, y, direction = map(int, input().split())
+d = [[0] * m for _ in range(n)] # 방문 확인 리스트
+d[x][y] = 1
 
 arr = []
 for _ in range(n):
-    temp = list(map(int, input().split()))
-    arr.append(temp)
+    arr.append(list(map(int, input().split())))
 
-dx, dy = [-1, 0, 1, 0], [0, 1, 0, -1] # 북, 동, 서, 남
+dxs, dys = [-1, 0, 1, 0], [0, 1, 0, -1] # 북, 동, 남, 서
 
 def turn_left():
     global direction
@@ -22,27 +16,28 @@ def turn_left():
         direction = 3
 
 count = 1
-turn_time = 0
+turn_count = 0
+
 while True:
     turn_left()
-    nx, ny = x + dx[direction], y + dy[direction]
-
-    if visited[nx][ny] == 0 and arr[nx][ny] == 0:
-        visited[nx][ny] = 1
-        x, y = nx, ny
+    nx, ny = x + dxs[direction], y + dys[direction]
+    if d[nx][ny] == 0 and arr[nx][ny] == 0:
+        d[nx][ny] = 1
+        x, y = nx, ny 
         count += 1
-        turn_time = 0
+        turn_count = 0
         continue
     else:
-        turn_time += 1
+        turn_count += 1
     
-    if turn_time == 4:
-        nx, ny = x - dx[direction], y - dy[direction]
+    if turn_count == 4:
+        nx, ny = x - dxs[direction], y - dys[direction]
         if arr[nx][ny] == 0:
-            x, y = nx, ny
+            x, y = nx, ny 
+            turn_count = 0
         else:
-            break
-
-        turn_time = 0
+            break 
 
 print(count)
+
+
