@@ -1,31 +1,27 @@
-from collections import deque
+n, m = map(int, input().split())
+arr = []
+for _ in range(n):
+    arr.append(list(map(int, input().split())))
 
-n, m = 4, 5
-graph = [
-    [0, 0, 1, 1, 0],
-    [0, 0, 0, 1, 1],
-    [1, 1, 1, 1, 1],
-    [0, 0, 0, 0, 0]
-]
+count = 0
 
-def dfs(x, y):
-    if x < 0 or y < 0 or x >= n or y >= m:
-        return False
-    
-    if graph[x][y] == 0:
-        graph[x][y] = 1
-        dfs(x-1, y)
-        dfs(x+1, y)
-        dfs(x, y-1)
-        dfs(x, y+1)
-        return True
-    
-    return False
+def dfs(arr, i, j):
+    global count 
 
-result = 0
-for i in range(n+1):
-    for j in range(m+1):
-        if dfs(i, j) == True:
-            result += 1
+    if i < 0 or i >= n or j < 0 or j >= m or arr[i][j] == 1:
+        return 
+    else:
+        arr[i][j] = 1
+        dfs(arr, i+1, j)
+        dfs(arr, i-1, j)
+        dfs(arr, i, j+1)
+        dfs(arr, i, j-1)
 
-print(result)
+
+for i in range(n):
+    for j in range(m):
+        if arr[i][j] != 1:
+            dfs(arr, i, j)
+            count += 1
+
+print(count)
