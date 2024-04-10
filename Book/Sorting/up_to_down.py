@@ -1,9 +1,9 @@
-# n = int(input())
-# arr = list(map(int, input()) for _ in range(n))
+n = int(input())
+arr = []
 
-n = 3
-arr = [15, 27, 12]
-sorted_arr = sorted(arr, reverse=True)
+for _ in range(n):
+    arr.append(int(input()))
 
-for num in sorted_arr:
-    print(num, end=' ')
+arr.sort(reverse=True)
+
+print(arr)
