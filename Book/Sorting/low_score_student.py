@@ -1,10 +1,9 @@
-# n = int(input())
-# arr = [list(input()) for _ in range(n)]
+n = int(input())
+arr = []
+for _ in range(n):
+    arr.append(list(input().split()))
 
-n = 2
-arr = [('홍길동', 95), ('이순신', 77), ('이영훈', 100)]
+arr.sort(key=lambda x : int(x[1]))
 
-sorted_arr = sorted(arr, key=(lambda x : x[1]))
-
-for name, score in sorted_arr:
-    print(name, end = ' ')
+for name, score in arr:
+    print(name, end=' ')
