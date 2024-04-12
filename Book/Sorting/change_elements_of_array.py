@@ -1,11 +1,17 @@
-n, k = 5, 3
-a = [1, 2, 5, 4, 3]
-b = [5, 5, 6, 6, 5]
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
 
-sorted_a = sorted(a)
-sorted_b = sorted(b, reverse=True)
+a.sort()
+b.sort(reverse=True)
 
-for i in range(k):
-    sorted_a[i] = sorted_b[i]
+answer = 0
 
-print(sum(sorted_a))
+for x, y in zip(a, b):
+    if k > 0:
+        answer += y 
+        k -= 1
+    else:
+        answer += x 
+
+print(answer)
