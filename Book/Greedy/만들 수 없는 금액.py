@@ -1,13 +1,13 @@
 n = int(input())
 arr = list(map(int, input().split()))
 
-target = 1
 arr.sort()
 
-for x in arr:
-    if target < x:
+target = 1
+for num in arr:
+    if num > target:
         break 
-    else: 
-        target += x 
+    else:
+        target += num 
 
 print(target)
