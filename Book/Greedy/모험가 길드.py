@@ -1,15 +1,15 @@
+n = int(input())
 arr = list(map(int, input().split()))
 
 arr.sort()
+
+cnt = 0
 result = 0
-fear = 0
-fear_count = 0
 
-for i in range(len(arr)):
-    fear = arr[i]
-    fear_count += 1
-    if fear_count == fear:
+for i in arr:
+    cnt += 1
+    if cnt >= i:
         result += 1
-        fear_count = 0
+        cnt = 0
 
-print(result)    
+print(result)
