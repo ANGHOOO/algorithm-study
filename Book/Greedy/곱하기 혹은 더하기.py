@@ -1,10 +1,10 @@
-arr = list(map(int, input()))
-answer = 0
+arr = list(input())
 
-for num in arr:
-    if num <= 1 or answer <= 1:
-        answer += num 
+result = int(arr[0])
+for i in range(1, len(arr)):
+    if result < 2 or int(arr[i]) < 2:
+        result += int(arr[i])
     else:
-        answer *= num 
+        result *= int(arr[i])
 
-print(answer)
+print(result)
