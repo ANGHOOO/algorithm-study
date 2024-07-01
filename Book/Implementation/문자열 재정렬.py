@@ -2,16 +2,17 @@ arr = list(input())
 alpha = []
 num = []
 
-for s in arr:
-    if s.isalpha():
-        alpha.append(s)
+for a in arr:
+    if a.isalpha():
+        alpha.append(a)
     else:
-        num.append(int(s))
+        num.append(a)
 
 alpha.sort()
-num = list(str(sum(num)))
+num_sum = 0
+for n in num:
+    num_sum += int(n)
 
-answer = alpha + num 
-answer = ''.join(answer)
-
-print(answer)
+result = ''
+result = result.join(alpha) + str(num_sum)
+print(result)
